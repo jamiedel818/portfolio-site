@@ -4,13 +4,13 @@
     {% for project in projects %}
         <article class="media content-section">
             <div class="media-body">
-                <h3><a class="article-title" href="#">{{ project.title }}</a></h3>
+                <h3>{{ project.name }}</h3>
                 <div class="article-metadata">
-                      <a class="mr-2" href="#">{{ project.author }}</a>
-                      <small class="text-muted">{{ project.datePublished }}</small>
+                      <a class="mr-2" href="https://github.com/jamiedel818?tab=overview&from=2019-01-01&to=2019-01-14" target='_blank'>{{ project.author }}</a>
+                      <small class="text-muted">{{ project.date }}</small>
                     </div>
                 <p class="article-content">{{ project.description }}</p>
-                <small> {{ project.link }} </small>
+                <small><a href="{{ '%s'%project.url }}" target='_blank'>{{ project.url }}</a></small>
             </div>
         </article>
     {% endfor %}
