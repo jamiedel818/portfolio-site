@@ -1,33 +1,13 @@
 #!/usr/bin/env python3
 from flask import Flask, render_template, url_for
+import getRepos
 
 #'flask run' in the terminal will run the final version
 #'./portfolio will run in degbug mode'
 app = Flask(__name__)
 
-projects = [
-    {
-        'title': 'covid-19 tracker',
-        'datePublished': '05/05/20',
-        'author': 'jamiedel818',
-        'description': 'description',
-        'link': 'www.github.com'
-        },
-    {
-        'title': 'directory operations',
-        'datePublished': '05/05/20',
-        'author': 'jamiedel818',
-        'description': 'description',
-        'link': 'www.github.com'
-    },
-    {
-        'title': 'personal website',
-        'datePublished': '05/05/20',
-        'author': 'jamiedel818',
-        'description': 'description',
-        'link': 'www.github.com'
-    }
-]
+
+projects = getRepos.handleData()
 
 @app.route('/')
 @app.route('/home')
