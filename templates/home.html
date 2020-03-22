@@ -1,0 +1,17 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+    {% for project in projects %}
+        <article class="media content-section">
+            <div class="media-body">
+                <h3><a class="article-title" href="#">{{ project.title }}</a></h3>
+                <div class="article-metadata">
+                      <a class="mr-2" href="#">{{ project.author }}</a>
+                      <small class="text-muted">{{ project.datePublished }}</small>
+                    </div>
+                <p class="article-content">{{ project.description }}</p>
+                <small> {{ project.link }} </small>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}
