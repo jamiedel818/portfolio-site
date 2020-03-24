@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests
 import json
-#r = requests.get("https://api.github.com/users/jamiedel818/repos")
+
 def writeData(data):
     with open('backup.json', 'w+') as outfile:
         json.dump(data, outfile)
@@ -25,8 +25,6 @@ def getData():
         print('INFO: Loading from backup file.')
         data = readData()
         return data
-
-
 
 def handleData():
     data = getData()
