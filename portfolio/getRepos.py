@@ -2,15 +2,6 @@
 import requests
 import json
 
-def writeData(data):
-    with open('backup.json', 'w+') as outfile:
-        json.dump(data, outfile)
-
-def readData():
-    with open('backup.json') as file:
-        data = json.load(file)
-    return data
-
 def getData():
     r = requests.get("https://api.github.com/users/jamiedel818/repos")
     #TEST 404 LINK --> r = requests.get("https://httpbin.org/delete")
@@ -18,12 +9,17 @@ def getData():
         r.raise_for_status()
         print("INFO: Data recieved from API")
         data = r.json()
-        writeData(data)
         return data
 
     except Exception as e:
-        print('INFO: Loading from backup file.')
-        data = readData()
+        print("ERROR:", e)
+        data = {
+            'name': "Data Not Found",
+            'author': "Data Not Found",
+            'date': "Data Not Found",
+            'description': "Data Not Found",
+            'url': "Data Not Found"
+        }
         return data
 
 def handleData():

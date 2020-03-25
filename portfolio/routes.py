@@ -1,18 +1,13 @@
-#!/usr/bin/env python3
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import registerForm, loginForm
-import getRepos
-
-#'flask run' in the terminal will run the final version
-#'./portfolio will run in degbug mode'
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = '2b403c1b27dcef0398450657a46ef027'
+from flask import render_template, url_for, flash, redirect
+from portfolio import app
+from portfolio.forms import registerForm, loginForm
+from portfolio.dbModel import user
+from portfolio.getRepos import handleData
 
 @app.route('/')
 @app.route('/home')
 def home():
-    projects = getRepos.handleData()
+    projects = handleData()
     return render_template('home.html', projects=projects, title="Home")
 
 
@@ -41,7 +36,3 @@ def login():
         else:
             flash(f'Login unsuccesful: Please check email and password.', 'danger')
     return render_template('login.html', title='Login', form=form)
-
-#This is to get live updates -- debugger mode
-if __name__ == '__main__':
-    app.run(debug=True)
