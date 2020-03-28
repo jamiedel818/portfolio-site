@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
+'''
+    Small library of functions dedicated to gathering Github project information.
+'''
 import requests
 import json
 
+'''
+    Request all public repositories from a Github account.
+    Return Json blob of repository information.
+'''
 def getData():
     r = requests.get("https://api.github.com/users/jamiedel818/repos")
     #TEST 404 LINK --> r = requests.get("https://httpbin.org/delete")
@@ -22,6 +29,10 @@ def getData():
         }
         return data
 
+'''
+    Parse the repository information we are interested in.
+    Return list of repository dictionaries
+'''
 def handleData():
     data = getData()
     repos = []
@@ -41,7 +52,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## TODO: Need to add excpetion handling to this and write to file? if exception fails read from local file
-## TODO: Add some logging to when was written or if it failed
-## TODO: ADD webhooks from github
