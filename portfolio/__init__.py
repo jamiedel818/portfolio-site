@@ -18,7 +18,6 @@ from flask_login import LoginManager
 #'./portfolio will run in degbug mode'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '2b403c1b27dcef0398450657a46ef027'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
